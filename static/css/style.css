@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#upload-section, #chat-section {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#upload-section {
+    width: 45%;
+}
+
+#chat-section {
+    width: 45%;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+#file-upload {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#status {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    display: none; /* 초기에는 보이지 않도록 설정 */
+}
+
+#uploaded-image {
+    width: 25%; /* 이미지 크기를 25%로 조정 */
+    height: auto;
+    margin-top: 20px;
+}
+
+#diagnosis-result {
+    margin-top: 20px;
+}
+
+#chat-log {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#user-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#send-button {
+    width: 25%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #upload-section, #chat-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* JavaScript로 제어할 부분을 위해 클래스 추가 */
+.uploading #status {
+    display: block; /* 업로드 중에는 '분석 중입니다' 문구를 표시 */
+}
