@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-image: url('/static/uploads/240618_자사몰슬라이스배너_(2000x778)_덴티.jpg');
+    background-image: url('/static/images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
