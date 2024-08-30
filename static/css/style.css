@@ -13,7 +13,7 @@ body {
 .container {
     width: 90%;
     max-width: 1200px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@ h1 {
 
 #upload-section, #chat-section {
     width: 48%;
-    background-color: #fff;
+    background-color: #f1f8e9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -48,13 +48,18 @@ h2 {
     margin-bottom: 10px;
 }
 
+#uploaded-image {
+    max-width: 100%;
+    margin-top: 10px;
+}
+
 #chat-log {
     height: 300px;
     overflow-y: auto;
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 
 #chat-input {
