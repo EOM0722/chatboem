@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docsmedi AI - 구내염 vs 구강암 진단</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="upload-section">
+            <h2>구내염 사진 업로드 및 진단</h2>
+            <input type="file" id="file-upload" accept="image/*">
+            <p id="status" style="display:none;">분석 중입니다...</p>
+            <img id="uploaded-image" src="" alt="" style="display:none; max-width: 300px;">
+            <div id="diagnosis-result"></div>
+        </div>
+
+        <div id="chat-section">
+            <h2>닥스AI 채팅</h2>
+            <div id="chat-log"></div>
+            <input type="text" id="user-input" placeholder="질문을 입력하세요...">
+            <button id="send-button">질문 보내기</button>
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
