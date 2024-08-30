@@ -97,16 +97,16 @@ document.addEventListener('DOMContentLoaded', async function() {
             const formData = new FormData();
             formData.append('file', file);
 
-            document.getElementById('status').textContent = '분석 중입니다...';
-            document.getElementById('status').style.display = 'block';
-            document.getElementById('uploaded-image').style.display = 'none';
-            document.getElementById('diagnosis-result').innerHTML = '';
+            // 업로드된 이미지 미리보기
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('uploaded-image').src = e.target.result;
+                document.getElementById('uploaded-image').style.display = 'block';
+            }
+            reader.readAsDataURL(file);
 
             try {
                 const data = await sendImageForPrediction(formData);
-                document.getElementById('uploaded-image').src = data.image_path;
-                document.getElementById('uploaded-image').style.display = 'block';
-                document.getElementById('status').style.display = 'none';
                 document.getElementById('diagnosis-result').innerHTML = `
                     <h3>진단 결과:</h3>
                     <p><strong>${data.diagnosis_result}</strong></p>
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 
                 addMessage('닥스AI', `진단 결과: ${data.diagnosis_result}\n${data.gpt_response}`);
             } catch (error) {
-                document.getElementById('status').textContent = '분석 중 오류가 발생했습니다.';
+                document.getElementById('diagnosis-result').innerHTML = '분석 중 오류가 발생했습니다.';
                 console.error('Error:', error);
             }
         }
