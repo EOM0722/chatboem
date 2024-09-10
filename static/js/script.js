@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://63bb-106-249-0-85.ngrok-free.app';  // ngrok URL로 변경
+const BACKEND_URL = 'https://63bb-106-249-0-85.ngrok-free.app';  // ngrok URL
 let userId = null;
 
 async function initSession() {
@@ -73,7 +73,28 @@ async function resetConversation() {
     }
 }
 
-// 나머지 함수들은 변경 없이 그대로 유지
+function addMessage(sender, content) {
+    const chatLog = document.getElementById('chat-log');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('chat-message', sender === '질문자' ? 'user-message' : 'bot-message');
+    messageElement.innerHTML = `<strong>${sender}:</strong><br>${formatMessage(content)}`;
+    chatLog.appendChild(messageElement);
+    chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function formatMessage(message) {
+    return message.replace(/\n/g, '<br>');
+}
+
+function displayImage(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = document.getElementById('uploaded-image');
+        img.src = e.target.result;
+        img.style.display = 'block';
+    }
+    reader.readAsDataURL(file);
+}
 
 document.addEventListener('DOMContentLoaded', async function() {
     await initSession();
