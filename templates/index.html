@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구강암 감별진단서비스 Docsmedi AI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>구강암 감별진단서비스 Docsmedi AI</h1>
+        <div class="content">
+            <div id="upload-section">
+                <h2>구내염 사진 업로드 및 진단</h2>
+                <h3>※ 스마트폰으로 촬영한 자신의 구내염 사진을 첨부해주세요.</h3>
+                <input type="file" id="file-upload" accept="image/*">
+                <div id="image-preview">
+                    <img id="uploaded-image" src="" alt="업로드된 이미지" style="display:none; max-width: 100%;">
+                </div>
+                <div id="diagnosis-result"></div>
+            </div>
+            <div id="chat-section">
+                <h2>닥스AI 채팅</h2>
+                <div id="chat-log" class="chat-log"></div>
+                <div id="chat-input">
+                    <input type="text" id="user-input" placeholder="질문을 입력하세요...">
+                    <button id="send-button">질문 보내기</button>
+                </div>
+            </div>
+        </div>
+        <p class="footer">※ 진단예측 도구 일 뿐 정확한 진단은 치과의사와 상담하세요.</p>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
