@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://8d00-106-249-0-85.ngrok-free.app';  // ngrok URL
+const BACKEND_URL = ' https://16fa-106-249-0-85.ngrok-free.app';  // ngrok URL
 let userId = null;
 
 async function initSession() {
