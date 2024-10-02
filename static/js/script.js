@@ -1,4 +1,4 @@
-const BACKEND_URL = ' https://16fa-106-249-0-85.ngrok-free.app';  // ngrok URL
+const BACKEND_URL = 'http://localhost:5015';
 let userId = null;
 
 async function initSession() {
@@ -112,10 +112,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const data = await sendImageForPrediction(formData);
                 document.getElementById('diagnosis-result').innerHTML = `
                     <h3>진단 결과:</h3>
-                    <p><strong>${data.diagnosis_result}</strong></p>
+                    <p><strong>정상 가능성: ${data.normal_percentage}%</strong></p>
+                    <p><strong>구내염 가능성: ${data.ulcer_percentage}%</strong></p>
+                    <p><strong>구강암 가능성: ${data.cancer_percentage}%</strong></p>
                     ${formatMessage(data.gpt_response)}
                 `;
-                addMessage('닥스AI', `진단 결과: ${data.diagnosis_result}\n${data.gpt_response}`);
+                addMessage('닥스AI', `진단 결과:\n정상 가능성: ${data.normal_percentage}%\n구내염 가능성: ${data.ulcer_percentage}%\n구강암 가능성: ${data.cancer_percentage}%\n${data.gpt_response}`);
             } catch (error) {
                 document.getElementById('diagnosis-result').innerHTML = `오류: ${error.message}`;
                 console.error('Error:', error);
