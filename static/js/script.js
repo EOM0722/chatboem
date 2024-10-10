@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://d769-106-249-0-85.ngrok-free.app';  // ngrok URL로 업데이트 필요;
+const BACKEND_URL = 'https://6554-106-249-0-85.ngrok-free.app';  // ngrok URL로 업데이트 필요;
 let userId = null;
 
 async function initSession() {
