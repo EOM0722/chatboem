@@ -83,7 +83,10 @@ function addMessage(sender, content) {
 }
 
 function formatMessage(message) {
-    return message.replace(/\n/g, '<br>');
+    if (typeof message === 'string') {
+        return message.replace(/\n/g, '<br>');
+    }
+    return '메시지를 표시할 수 없습니다.';
 }
 
 function displayImage(file) {
@@ -110,14 +113,23 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             try {
                 const data = await sendImageForPrediction(formData);
-                document.getElementById('diagnosis-result').innerHTML = `
-                    <h3>진단 결과:</h3>
-                    <p><strong>정상 가능성: ${data.normal_percentage}%</strong></p>
-                    <p><strong>구내염 가능성: ${data.ulcer_percentage}%</strong></p>
-                    <p><strong>구강암 가능성: ${data.cancer_percentage}%</strong></p>
-                    ${formatMessage(data.gpt_response)}
-                `;
-                addMessage('닥스AI', `진단 결과:\n정상 가능성: ${data.normal_percentage}%\n구내염 가능성: ${data.ulcer_percentage}%\n구강암 가능성: ${data.cancer_percentage}%\n${data.gpt_response}`);
+                if (data && typeof data === 'object') {
+                    const normalPercentage = data.normal_percentage || '정보 없음';
+                    const ulcerPercentage = data.ulcer_percentage || '정보 없음';
+                    const cancerPercentage = data.cancer_percentage || '정보 없음';
+                    const gptResponse = data.gpt_response || '추가 정보가 없습니다.';
+
+                    document.getElementById('diagnosis-result').innerHTML = `
+                        <h3>진단 결과:</h3>
+                        <p><strong>정상 가능성: ${normalPercentage}%</strong></p>
+                        <p><strong>구내염 가능성: ${ulcerPercentage}%</strong></p>
+                        <p><strong>구강암 가능성: ${cancerPercentage}%</strong></p>
+                        ${formatMessage(gptResponse)}
+                    `;
+                    addMessage('닥스AI', `진단 결과:\n정상 가능성: ${normalPercentage}%\n구내염 가능성: ${ulcerPercentage}%\n구강암 가능성: ${cancerPercentage}%\n${gptResponse}`);
+                } else {
+                    throw new Error('서버로부터 유효한 응답을 받지 못했습니다.');
+                }
             } catch (error) {
                 document.getElementById('diagnosis-result').innerHTML = `오류: ${error.message}`;
                 console.error('Error:', error);
